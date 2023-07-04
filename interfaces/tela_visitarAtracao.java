@@ -27,7 +27,7 @@ public class tela_visitarAtracao extends JFrame {
 
         //listar atracoes
         comboBoxAtracoes = new JComboBox<>();
-        List<Atracao> atracoes = bilheteria.getAtracoesDisponiveis();
+        List<Atracao> atracoes = bilheteria.getAtracoes();
         for (Atracao atracao : atracoes) {
             comboBoxAtracoes.addItem(atracao);
         }
@@ -72,9 +72,7 @@ public class tela_visitarAtracao extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Comprador compradorSelecionado = (Comprador) comboBoxCompradores.getSelectedItem();
                 Atracao atracaoSelecionada = (Atracao) comboBoxAtracoes.getSelectedItem();
-
-                // Realiza as ações necessárias com o comprador e a atração selecionados
-                // ...
+                compradorSelecionado.visitarAtracao(atracaoSelecionada);
 
                 dispose(); // Fecha a janela após confirmar
             }

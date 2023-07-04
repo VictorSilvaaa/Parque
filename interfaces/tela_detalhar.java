@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+
 public class tela_detalhar extends JFrame {
     private JComboBox<Comprador> comboBoxCompradores;
     private JTextArea textAreaDetalhes;
@@ -30,7 +31,7 @@ public class tela_detalhar extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                ExibirDetalharAtracao exibirAtracao = new ExibirDetalharAtracao();
+                tela_ExibirDetalharAtracao exibirAtracao = new tela_ExibirDetalharAtracao(bilheteria, frame);
             }
         });
 
@@ -38,7 +39,7 @@ public class tela_detalhar extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                ExibirDetalharUsuario exibirUsuario = new ExibirDetalharUsuario(bilheteria, frame);
+                tela_ExibirDetalharUsuario exibirUsuario = new tela_ExibirDetalharUsuario(bilheteria, frame);
             }
         });
 

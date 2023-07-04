@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
 
-public class ExibirDetalharUsuario extends JFrame {
+public class tela_ExibirDetalharUsuario extends JFrame {
     private JComboBox<Comprador> comboBoxCompradores;
     private JTextArea textAreaDetalhes;
 
-    public ExibirDetalharUsuario(Bilheteria bilheteria, JFrame frameAnterior) {
+    public tela_ExibirDetalharUsuario(Bilheteria bilheteria, JFrame frameAnterior) {
         JFrame frame = new JFrame("Formulário");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(480, 400);

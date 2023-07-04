@@ -113,14 +113,14 @@ public class Bilheteria {
     }
 }
     
-     public List<Atracao> getAtracoesDisponiveis() {
+     public List<Atracao> getAtracoes() {
         List<Atracao> atracoesDisponiveis = new ArrayList<>();
 
         for (Map.Entry<Atracao, Integer> entry : ingressos.entrySet()) {
             Atracao atracao = entry.getKey();
             int quantidadeIngressos = entry.getValue();
 
-            if (quantidadeIngressos > 0) {
+            if (quantidadeIngressos >= 0) {
                 atracoesDisponiveis.add(atracao);
             }
         }

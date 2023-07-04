@@ -123,7 +123,7 @@ public class tela_cadastrarAtracao extends JFrame {
         //listar atracoes
         JLabel labelAtracoes = new JLabel("Dependencia");
         comboBoxAtracoes = new JComboBox<>();
-        List<Atracao> atracoes = bilheteria.getAtracoesDisponiveis();
+        List<Atracao> atracoes = bilheteria.getAtracoes();
         comboBoxAtracoes.addItem(null);
         for (Atracao atracao : atracoes) {
             comboBoxAtracoes.addItem(atracao);
