@@ -82,6 +82,7 @@ public class tela_ExibirDetalharAtracao extends JFrame {
         detalhes+= "Altura minima: " + atracao.getAlturaMinima() + "\n";
         detalhes+= "Restrição Idade: " + atracao.getRestricaoIdade() + "\n";
         detalhes+= "Horario funcionamento: " + atracao.getHoraAbertura() + "-" + atracao.getHoraFechamento()+"\n";
+        detalhes+= "depende: " + atracao.getDependeAtracao();
 
         textAreaDetalhes.setText(detalhes);
     } else {

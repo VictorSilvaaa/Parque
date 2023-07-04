@@ -3,18 +3,23 @@ import java.time.LocalTime;
 public class Atracao {
     private String nome;
     private int capacidade;
-    private int alturaMinima;
+    private float alturaMinima;
     private int restricaoIdade;
     private LocalTime horaAbertura;
     private LocalTime horaFechamento;
+    private Atracao dependeAtracao;
     public Atracao(){};
-    public Atracao(String nome,int capacidade, int alturaMinima, int restricaoIdade, LocalTime horaAbertura, LocalTime horaFechamento) {
+    public Atracao(String nome){
+        this.nome = nome;
+    };
+    public Atracao(String nome,int capacidade, float alturaMinima, int restricaoIdade, LocalTime horaAbertura, LocalTime horaFechamento, Atracao dependeAtracao) {
         this.nome = nome;
         this.capacidade = capacidade;
         this.alturaMinima = alturaMinima;
         this.restricaoIdade = restricaoIdade;
         this.horaAbertura = horaAbertura;
         this.horaFechamento = horaFechamento;
+        this.dependeAtracao = dependeAtracao;
     }
 
     public String getNome() {
@@ -32,11 +37,11 @@ public class Atracao {
         this.capacidade = capacidade;
     }
 
-    public int getAlturaMinima() {
+    public float getAlturaMinima() {
         return alturaMinima;
     }
 
-    public void setAlturaMinima(int alturaMinima) {
+    public void setAlturaMinima(float alturaMinima) {
         this.alturaMinima = alturaMinima;
     }
 
@@ -46,6 +51,12 @@ public class Atracao {
 
     public void setRestricaoIdade(int restricaoIdade) {
         this.restricaoIdade = restricaoIdade;
+    }
+    public void setDependeAtracao(Atracao dependeAtracao){
+        this.dependeAtracao = dependeAtracao;
+    }
+    public Atracao getDependeAtracao() {
+        return dependeAtracao;
     }
 
     public LocalTime getHoraAbertura() {

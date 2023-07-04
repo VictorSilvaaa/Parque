@@ -1,8 +1,11 @@
 import javax.swing.*;
+import javax.swing.RowFilter.Entry;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Map;
 
 public class tela_visitarAtracao extends JFrame {
     private JComboBox<Comprador> comboBoxCompradores;
@@ -72,9 +75,27 @@ public class tela_visitarAtracao extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Comprador compradorSelecionado = (Comprador) comboBoxCompradores.getSelectedItem();
                 Atracao atracaoSelecionada = (Atracao) comboBoxAtracoes.getSelectedItem();
-                compradorSelecionado.visitarAtracao(atracaoSelecionada);
-
-                dispose(); // Fecha a janela após confirmar
+                boolean flag = false;
+                if (atracaoSelecionada.getDependeAtracao() != null) {
+                    for (Map.Entry<Atracao, Integer> atracao : compradorSelecionado.getAtracoesVisitadas().entrySet()) {
+                        Atracao chave = atracao.getKey();
+                        if (chave.getNome().equals(atracaoSelecionada.getDependeAtracao().getNome())) {
+                            // O comprador já visitou a atração necessária
+                           flag = true;
+                        } 
+                    }           
+                }
+                if(atracaoSelecionada.getDependeAtracao()==null || flag == true){
+                    compradorSelecionado.visitarAtracao(atracaoSelecionada);
+                    JOptionPane.showMessageDialog(null, "Atração visitada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                    frameAnterior.setVisible(true);
+                }else{ 
+                    JOptionPane.showMessageDialog(null, "Não é possível visitar essa atração sem antes visitar a atração dependente.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    dispose();
+                    frameAnterior.setVisible(true);
+                    // Exibir a tela de aviso ou tomar outras ações necessárias
+                }
             }
         });
 

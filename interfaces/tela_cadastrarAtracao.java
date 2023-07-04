@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.time.LocalTime;
 import java.util.List;
 import java.awt.GridLayout;
-
+import java.lang.NumberFormatException;
 import java.awt.Component;
 
 
@@ -150,22 +150,25 @@ public class tela_cadastrarAtracao extends JFrame {
         botaoConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nome = campoNome.getText();
-                int capacidade = Integer.parseInt(campoCapacidade.getText());
-                int alturaMinima = Integer.parseInt(campoAlturaMinima.getText());
-                int restricaoIdade = Integer.parseInt(campoRestricaoIdade.getText());
-                LocalTime horaAbertura = LocalTime.parse(campoHoraAbertura.getText());
-                LocalTime horaFechamento = LocalTime.parse(campoHoraFechamento.getText());
-                Atracao itemSelecionado = (Atracao) comboBoxAtracoes.getSelectedItem();
-
-                Brinquedo newBrinquedo = new Brinquedo(nome, capacidade, alturaMinima, restricaoIdade, horaAbertura, horaFechamento, itemSelecionado);
-                bilheteria.detalharAtracoes();
-                bilheteria.adicionarAtracao(newBrinquedo, capacidade);
-                bilheteria.detalharAtracoes();
-
-                
-            }
-        });
+                    String nome;
+                    int capacidade;
+                    float alturaMinima;
+                    int restricaoIdade;
+                    LocalTime horaAbertura;
+                    LocalTime horaFechamento;
+                    Atracao itemSelecionado;
+                   
+                    nome = campoNome.getText();
+                    capacidade = Integer.parseInt(campoCapacidade.getText());
+                    alturaMinima = Float.parseFloat(campoAlturaMinima.getText());
+                    restricaoIdade = Integer.parseInt(campoRestricaoIdade.getText());
+                    horaAbertura = LocalTime.parse(campoHoraAbertura.getText());
+                    horaFechamento = LocalTime.parse(campoHoraFechamento.getText());
+                    itemSelecionado = (Atracao) comboBoxAtracoes.getSelectedItem();
+                                        
+                    Brinquedo newBrinquedo = new Brinquedo(nome, capacidade, alturaMinima, restricaoIdade, horaAbertura, horaFechamento, itemSelecionado);
+                    bilheteria.adicionarAtracao(newBrinquedo, capacidade);                    
+    }});
         painelPrincipal.add(botaoConfirmar);
 
         // Botão Voltar
@@ -221,7 +224,7 @@ public class tela_cadastrarAtracao extends JFrame {
         //listar atracoes
         JLabel labelAtracoes = new JLabel("Dependencia");
         comboBoxAtracoes = new JComboBox<>();
-        List<Atracao> atracoes = bilheteria.getAtracoesDisponiveis();
+        List<Atracao> atracoes = bilheteria.getAtracoes();
         comboBoxAtracoes.addItem(null);
         for (Atracao atracao : atracoes) {
             comboBoxAtracoes.addItem(atracao);
@@ -246,18 +249,17 @@ public class tela_cadastrarAtracao extends JFrame {
         botaoConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                    String nome = campoNome.getText();
+                    int capacidade = Integer.parseInt(campoCapacidade.getText());
+                    LocalTime horaAbertura = LocalTime.parse(campoHoraAbertura.getText());
+                    LocalTime horaFechamento = LocalTime.parse(campoHoraFechamento.getText());
+                    Atracao itemSelecionado = (Atracao) comboBoxAtracoes.getSelectedItem();
+                    Lanchonete newLanchonete = new Lanchonete(nome, capacidade, horaAbertura, horaFechamento, itemSelecionado);
+                    bilheteria.detalharAtracoes();
+                    bilheteria.adicionarAtracao(newLanchonete, capacidade);
+                    bilheteria.detalharAtracoes();
+                    JOptionPane.showMessageDialog(null, "Atração cadastrada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE); 
                 
-                String nome = campoNome.getText();
-                int capacidade = Integer.parseInt(campoCapacidade.getText());
-                LocalTime horaAbertura = LocalTime.parse(campoHoraAbertura.getText());
-                LocalTime horaFechamento = LocalTime.parse(campoHoraFechamento.getText());
-
-                Lanchonete newLanchonete = new Lanchonete(nome, capacidade, horaAbertura, horaFechamento);
-                bilheteria.detalharAtracoes();
-                bilheteria.adicionarAtracao(newLanchonete, capacidade);
-                bilheteria.detalharAtracoes();
-
-                frame.dispose();
             }
         });
         painelPrincipal.add(botaoConfirmar);

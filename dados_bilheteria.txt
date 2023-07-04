@@ -1,9 +1,8 @@
 
-Nome: Montanha Russa
-Capacidade: 30
-Altura Mínima: 150
-Restrição de Idade: 14
-Hora de Abertura: 08:00
-Hora de Fechamento: 17:00
-Quantidade de ingressos: 30
-------------------------
+Nome: Teste
+Capacidade: 15
+Altura Mínima: 1.5
+Restrição de Idade: 15
+Hora de Abertura: 00:00
+Hora de Fechamento: 00:00
+Quantidade de ingressos: 15

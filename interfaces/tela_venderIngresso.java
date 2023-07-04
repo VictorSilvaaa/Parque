@@ -45,6 +45,9 @@ public class tela_venderIngresso extends JFrame {
                
                 Comprador newComprador = new Comprador(nome, idade, altura);
                 bilheteria.adicionarComprador(newComprador);
+                 JOptionPane.showMessageDialog(null, "Ingresso vendido com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                 dispose();
+                 frameAnterior.setVisible(true);
                 // Realize as ações desejadas com os dados do ingresso vendido
                // dispose(); // Fecha a tela atual
             }

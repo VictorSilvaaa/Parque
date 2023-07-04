@@ -68,6 +68,8 @@ public class Bilheteria {
             writer.newLine();
             writer.write("Quantidade de ingressos: " + quantidadeIngressos);
             writer.newLine();
+            writer.write("Depende: " + atracao.getDependeAtracao().getNome());
+            writer.newLine();
             writer.write("------------------------");
             writer.newLine();
         }
@@ -90,7 +92,7 @@ public class Bilheteria {
                 int capacidade = Integer.parseInt(line.substring("Capacidade: ".length()));
                 atracao.setCapacidade(capacidade);
             } else if (line.startsWith("Altura Mínima: ")) {
-                int alturaMinima = Integer.parseInt(line.substring("Altura Mínima: ".length()));
+                float alturaMinima = Float.parseFloat(line.substring("Altura Mínima: ".length()));
                 atracao.setAlturaMinima(alturaMinima);
             } else if (line.startsWith("Restrição de Idade: ")) {
                 int restricaoIdade = Integer.parseInt(line.substring("Restrição de Idade: ".length()));
@@ -106,6 +108,9 @@ public class Bilheteria {
             } else if (line.startsWith("Quantidade de ingressos: ")) {
                 quantidadeIngressos = Integer.parseInt(line.substring("Quantidade de ingressos: ".length()));
                 ingressos.put(atracao, quantidadeIngressos);
+            }else if (line.startsWith("Depende: ")) {
+                String nomeDepende = line.substring("Depende: ".length());
+                atracao.setDependeAtracao(new Atracao(nomeDepende));
             }
         }
     } catch (IOException e) {
